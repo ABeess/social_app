@@ -1,5 +1,6 @@
 import { Card, Container, Link as MUILink, Stack, styled, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { DeveloperIllustrator } from 'src/assets';
 import Page from 'src/components/Page';
 import { PATH_AUTH } from 'src/routes/path';
 import { LoginForm } from 'src/sections/auth';
@@ -36,6 +37,7 @@ export default function Login() {
         </TextStyled>
         <Card
           sx={{
+            width: 500,
             height: 1,
             display: {
               xs: 'none',
@@ -46,7 +48,7 @@ export default function Login() {
           <Typography variant="h4" align="center" mt={15} mb={5}>
             Hi, Wellcome my app
           </Typography>
-          {/* <DeveloperIllustrator sx={{ maxWidth: 500 }} /> */}
+          <DeveloperIllustrator sx={{ maxWidth: 500 }} />
         </Card>
         <Container maxWidth="sm">
           <Stack

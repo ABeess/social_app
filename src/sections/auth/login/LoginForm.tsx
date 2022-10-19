@@ -63,7 +63,7 @@ export default function LoginForm() {
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={2}>
         <RHFTextField fullWidth name="email" label="Email" />
-        <RHFTextField fullWidth name="password" label="Password" />
+        <RHFTextField fullWidth name="password" label="Password" type="password" />
         <LoadingButton variant="contained" size="large" loading={isLoading} type="submit">
           Login
         </LoadingButton>

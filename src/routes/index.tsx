@@ -1,5 +1,6 @@
 import { lazy, LazyExoticComponent, Suspense } from 'react';
 import { createBrowserRouter, useRoutes } from 'react-router-dom';
+import GuestGuard from 'src/guards/GuestGuard';
 import Layout from 'src/layouts';
 // import Layout from 'src/layouts';
 
@@ -75,11 +76,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <Login />,
+        element: (
+          <GuestGuard>
+            <Login />
+          </GuestGuard>
+        ),
       },
       {
         path: 'register',
-        element: <Register />,
+        element: (
+          <GuestGuard>
+            <Register />
+          </GuestGuard>
+        ),
       },
     ],
   },

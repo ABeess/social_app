@@ -3,6 +3,8 @@ services:
   frontend:
     build: .
     container_name: frontend
+    env_file:
+      - client.env
     ports:
       - '3030:3030'
     command: sh -c "yarn install && yarn build && npm install --global serve && yarn start"
