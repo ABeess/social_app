@@ -1,5 +1,4 @@
 import { Box, BoxProps } from '@mui/material';
-import React from 'react';
 
 export default function LiveIllustrator({ sx, ...other }: BoxProps) {
   return (

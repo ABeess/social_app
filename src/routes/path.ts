@@ -20,9 +20,10 @@ export const PATH_DASHBOARD = {
 
 export const PATH_PAGE = {
   root: ROOT_PAGE,
-  post: 'post',
-  lookingFriend: 'looking-friend',
-  profile: (id: string) => `profile/${id}`,
+  post: '/post',
+  lookingFriend: '/looking-friend',
+  profile: (id: string) => `/profile/${id}`,
+  message: (id: string) => `/message/t/${id}`,
 };
 
 export const PATH_AUTH = {

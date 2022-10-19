@@ -1,5 +1,4 @@
 import { SxProps } from '@mui/material';
-import React from 'react';
 import { DropzoneOptions } from 'react-dropzone';
 import { Controller, useFormContext } from 'react-hook-form';
 import { UploadMultiple } from '../upload';

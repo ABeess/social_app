@@ -1,6 +1,6 @@
 import { LoadingButton } from '@mui/lab';
 import { alpha, Avatar, AvatarGroup, Box, Button, Card, IconButton, Stack, styled, Typography } from '@mui/material';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useCallback, useEffect, useState } from 'react';
 import { uploadSingle } from 'src/api/upload.api';
 import Dialog from 'src/components/Dialog';
@@ -11,7 +11,7 @@ import useRouter from 'src/hooks/useRouter';
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks';
 import { updateAvatarRedux } from 'src/redux/slice/auth.slice';
 import { closeModal, openModal } from 'src/redux/slice/modal.slice';
-import { FileType, User } from 'src/types/Base';
+import { FileType } from 'src/types/Base';
 import { ProfileUserResponse } from 'src/types/Response';
 import { hashOwner } from 'src/utils/whitelistUrl';
 import { ProfileCreateForm } from './ProfileCreateForm';
@@ -53,7 +53,7 @@ const MyAvatarStyled = styled(Avatar)(({ theme }) => ({
   },
 }));
 
-const BoxAvatarStyled = styled('div')(({ theme }) => ({
+const BoxAvatarStyled = styled('div')(() => ({
   height: 100,
   width: 100,
   position: 'absolute',

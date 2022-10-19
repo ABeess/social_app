@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
 import { Button, Container, Stack, styled, Typography } from '@mui/material';
-import { InfiniteData, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { isEmpty } from 'lodash';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -15,7 +15,6 @@ import MyAvatar from 'src/components/MyAvatar';
 import { useAppSelector } from 'src/redux/hooks';
 import { FileType, User } from 'src/types/Base';
 import { PostInput } from 'src/types/InputValue';
-import { AllPostResponse } from 'src/types/QueryResponse';
 import * as Yup from 'yup';
 import PostAction from './PostAction';
 

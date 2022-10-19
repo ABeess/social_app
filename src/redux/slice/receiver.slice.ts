@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { User } from 'src/generated/graphql';
+import { User } from 'src/types/Base';
 
 export interface ModalState {
   user: Partial<User>;

@@ -1,3 +1,3 @@
-import uploadIllustrator from './upload_illustration.png';
+import uploadIllustrator from './uploadillustration.png';
 
 export { uploadIllustrator };

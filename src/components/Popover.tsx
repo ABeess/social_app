@@ -17,7 +17,7 @@ const Popover = ({ anchorEl, onClose, width = 420, vertical, horizontal, sx, chi
       horizontal: horizontal || 'left',
     }}
     transformOrigin={{
-      vertical: 'top',
+      vertical: -8,
       horizontal: width - 80,
     }}
     sx={{ ...sx }}

@@ -73,6 +73,27 @@ export const FRIENDSHIP_WAITING = gql`
   }
 `;
 
+export const GET_FRIENDS = gql`
+  query GetFriends($userId: String!) {
+    getFriends(userId: $userId) {
+      friends {
+        id
+        firstName
+        lastName
+        avatar
+        createdAt
+        updatedAt
+        __typename
+      }
+      page
+      perPage
+      totalCount
+      totalPage
+      __typename
+    }
+  }
+`;
+
 export const ADD_FRIEND = gql`
   mutation addFriendRequest($data: AddFriendInput!) {
     addFriend(data: $data) {

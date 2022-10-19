@@ -1,6 +1,7 @@
 import {
   AddFriendResponse,
   BaseResponse,
+  createConversationResponse,
   CreatePostResponse,
   LikePostResponse,
   UpdateUserProfileResponse,
@@ -18,6 +19,7 @@ export type Mutation = {
   likePost: LikePostResponse;
   unLikePost: BaseResponse;
   updateProfile: UpdateUserProfileResponse;
+  createConversation: createConversationResponse;
 };
 
 export type LoginMutation = Pick<Mutation, 'login'>;
@@ -30,3 +32,4 @@ export type AddFriendMutation = Pick<Mutation, 'addFriend'>;
 export type LikePostMutation = Pick<Mutation, 'likePost'>;
 export type UnLikePostMutation = Pick<Mutation, 'unLikePost'>;
 export type UpdateProfileMutation = Pick<Mutation, 'updateProfile'>;
+export type CreateConversationMutation = Pick<Mutation, 'createConversation'>;

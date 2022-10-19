@@ -1,15 +1,14 @@
 import { Box, Card, Container } from '@mui/material';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { flatten, isEmpty } from 'lodash';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { getPost } from 'src/api/post.api';
 import Page from 'src/components/Page';
 import PostSkeleton from 'src/components/skeleton/PostSkeleton';
 import useRouter from 'src/hooks/useRouter';
-import { useAppSelector } from 'src/redux/hooks';
-import { CommentList, PostCreate, PostList } from 'src/sections/post';
-import { Post, User } from 'src/types/Base';
+import { CommentList, PostList } from 'src/sections/post';
+import { Post } from 'src/types/Base';
 import socket from 'src/utils/socket';
 
 export default function PostPage() {
@@ -18,8 +17,6 @@ export default function PostPage() {
   const { params, pathname } = useRouter();
 
   const hashUrl = !isEmpty(params) && pathname.includes('profile');
-
-  const user = useAppSelector((state) => state.auth.user) as User;
 
   const { fetchNextPage, hasNextPage, isLoading, data } = useInfiniteQuery(
     [
@@ -39,7 +36,7 @@ export default function PostPage() {
         }),
       }),
     {
-      getNextPageParam: ({ page, totalPage }) => (Number(page) < Number(totalPage) - 1 ? Number(page) + 1 : undefined),
+      getNextPageParam: ({ page, totalPage }) => (page < totalPage - 1 ? page + 1 : undefined),
       onSuccess: (data) => {
         if (!isEmpty(data)) {
           setPostResponse(() => flatten(data.pages.map((page) => page.posts) as unknown as Post[]));
@@ -50,7 +47,7 @@ export default function PostPage() {
 
   const [ref, inView] = useInView();
 
-  const [open, setOpen] = useState<boolean>(false);
+  // const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (inView) {
@@ -67,22 +64,22 @@ export default function PostPage() {
     }
   }, [postResponse]);
 
-  const handleSuccess = () => {
-    setOpen(false);
-  };
+  // const handleSuccess = () => {
+  //   setOpen(false);
+  // };
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  // const handleOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   return (
     <Page title="Post">
       <Container maxWidth="md">
-        <PostCreate handleSuccess={handleSuccess} open={open} handleClose={handleClose} handleOpen={handleOpen} />
+        {/* <PostCreate handleSuccess={handleSuccess} open={open} handleClose={handleClose} handleOpen={handleOpen} /> */}
 
         {isLoading
           ? [...Array(2)].map((_, index) => <PostSkeleton key={index} />)

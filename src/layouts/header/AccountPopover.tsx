@@ -1,12 +1,11 @@
 import { Box, Divider, Link as MUILink, List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import IconButtonAnimate from 'src/components/animate/IconButtonAnimate';
 import MyAvatar from 'src/components/MyAvatar';
 import Popover from 'src/components/Popover';
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks';
 import { userLogout } from 'src/redux/slice/auth.slice';
-import { PATH_DASHBOARD, PATH_PAGE } from 'src/routes/path';
+import { PATH_PAGE } from 'src/routes/path';
 
 export default function AccountPopover() {
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
@@ -29,16 +28,7 @@ export default function AccountPopover() {
 
   return (
     <div>
-      <IconButtonAnimate
-        sx={{
-          '&:hover': {
-            backgroundColor: 'transparent',
-          },
-        }}
-        onClick={handleOpenPopover}
-      >
-        <MyAvatar />
-      </IconButtonAnimate>
+      <MyAvatar onClick={handleOpenPopover} sx={{ cursor: 'pointer' }} />
       <Popover
         open={Boolean(anchorEl)}
         anchorEl={anchorEl}

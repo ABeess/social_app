@@ -3,6 +3,12 @@ import { ReactNode } from 'react';
 import SimpleBarReact from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 
+const RootStyle = styled('div')(() => ({
+  flexGrow: 1,
+  height: '100%',
+  overflow: 'hidden',
+}));
+
 const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
   maxHeight: '100%',
   '& .simplebar-scrollbar': {
@@ -24,16 +30,18 @@ const SimpleBarStyle = styled(SimpleBarReact)(({ theme }) => ({
   },
 }));
 
-interface ScrollBarProp {
+interface ScrollBarProps extends SimpleBarReact.Props {
   children: ReactNode;
   sx?: SxProps;
 }
-type ScrollBarType = ScrollBarProp & SimpleBarReact.Props;
+// type ScrollBarType = ScrollBarProp & SimpleBarReact.Props;
 
-const ScrollBar = ({ children, sx, ...other }: ScrollBarType) => (
-    <SimpleBarStyle timeout={500} clickOnTrack={false} sx={sx} {...other}>
+const ScrollBar = ({ children, sx, ...other }: ScrollBarProps) => (
+  <RootStyle>
+    <SimpleBarStyle clickOnTrack={false} sx={sx} {...other}>
       {children}
     </SimpleBarStyle>
-  );
+  </RootStyle>
+);
 
 export default ScrollBar;

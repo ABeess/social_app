@@ -1,5 +1,11 @@
 import { Maybe } from '.';
 
+export type Model = {
+  __typename?: string;
+  createdAt: Date;
+  id: string;
+  updatedAt: Date;
+};
 export interface FileType extends File {
   preview?: string;
 }
@@ -98,16 +104,6 @@ export type Notification = {
   updatedAt: Date;
 };
 
-export type Conversation = {
-  __typename?: 'Conversation';
-  createdAt: Date;
-  id?: Maybe<string>;
-  owner?: Maybe<User>;
-  receiver?: Maybe<Array<User>>;
-  title?: Maybe<string>;
-  updatedAt: Date;
-};
-
 export type Friendship = {
   __typename?: 'Friendship';
   accepted: boolean;
@@ -120,18 +116,34 @@ export type Friendship = {
 
 export type Image = {
   __typename?: 'Image';
-  createdAt: Date;
   fileName: Maybe<string>;
   id: string;
   post: Maybe<Post>;
   type: Maybe<string>;
+  createdAt: Date;
   updatedAt: Date;
   url: string;
 };
 
-export type Model = {
-  __typename?: 'Model';
-  createdAt: Date;
-  id: string;
-  updatedAt: Date;
-};
+export interface Conversation extends Model {
+  title: Maybe<string>;
+  type: 'groups' | 'private';
+  owner: User;
+  receiver: Array<User>;
+  lastMessage: string;
+  lastSendUser: User;
+
+  participants: Array<Participant>;
+}
+export interface Participant extends Model {
+  seen: boolean;
+  totalSeen: number;
+  conversation: Conversation;
+  user: User;
+}
+
+export interface Message extends Model {
+  message: string;
+  sender: User;
+  conversation: Conversation;
+}

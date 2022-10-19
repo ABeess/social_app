@@ -1,4 +1,3 @@
-import React from 'react';
 import useRouter from 'src/hooks/useRouter';
 
 export default function Home() {

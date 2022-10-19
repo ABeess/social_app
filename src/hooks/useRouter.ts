@@ -4,7 +4,7 @@ import qs from 'qs';
 
 export default function useRouter() {
   const navigate = useNavigate();
-  const { pathname, search } = useLocation();
+  const { pathname, search, state } = useLocation();
   const params = useParams();
   const query = useMemo(() => qs.parse(search.replace(/[?]/g, '')), [search]);
 
@@ -18,5 +18,6 @@ export default function useRouter() {
     pathname,
     params,
     query,
+    state,
   };
 }

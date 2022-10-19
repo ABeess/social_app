@@ -1,9 +1,4 @@
-import data from '@emoji-mart/data';
 import { Box, ClickAwayListener, GlobalStyles, IconButton, styled, useTheme } from '@mui/material';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import Picker from '@emoji-mart/react';
-import { BaseEmoji } from 'emoji-mart';
 import { Dispatch, useState } from 'react';
 import Iconify from './Iconify';
 
@@ -29,7 +24,7 @@ interface EmojiPickerProps {
   size?: 'large' | 'small' | 'medium' | undefined;
 }
 
-export default function EmojiPicker({ value, setValue, size = 'medium' }: EmojiPickerProps) {
+export default function EmojiPicker({ size = 'medium' }: EmojiPickerProps) {
   const [isPicker, setIsPicker] = useState<boolean>(false);
 
   const theme = useTheme();
@@ -40,20 +35,20 @@ export default function EmojiPicker({ value, setValue, size = 'medium' }: EmojiP
         <GlobalStyles
           styles={{
             'em-emoji-picker': {
-              '--rgb-background': '#fff',
+              // '--rgb-background': '#fff',
             },
           }}
         />
 
         {isPicker && (
           <PickerStyled isLight={isLight}>
-            <Picker
+            {/* <MyEmojiPicker
               data={data}
               onEmojiSelect={(emoji: BaseEmoji) => setValue && setValue(value + emoji.native)}
               previewPosition="none"
               skinTonePosition="none"
               searchPosition="none"
-            />
+            /> */}
           </PickerStyled>
         )}
 

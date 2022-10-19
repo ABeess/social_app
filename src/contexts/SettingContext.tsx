@@ -6,11 +6,13 @@ import useCookiesTheme from 'src/hooks/useCookies';
 interface IInitialState {
   themeMode: string;
   onChange: (mode: string) => void;
+  onToggleMode: () => void;
 }
 
 const initialState: IInitialState = {
   themeMode: 'light',
   onChange: () => {},
+  onToggleMode: () => {},
 };
 
 const SettingContext = createContext(initialState);
@@ -22,16 +24,20 @@ interface SettingProviderProp {
 export default function SettingContextProvider({ children }: SettingProviderProp): ReactElement {
   const { themeMode, setThemeMode } = useCookiesTheme();
 
-  const [theme, setTheme] = useState('');
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => setTheme(themeMode || 'light'), [themeMode]);
 
   const handleChangeTheme = (mode: string) => {
     setThemeMode(mode);
   };
 
-  useEffect(() => setTheme(themeMode), [themeMode]);
+  const handleToggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
 
   return (
-    <SettingContext.Provider value={{ themeMode: theme, onChange: handleChangeTheme }}>
+    <SettingContext.Provider value={{ themeMode: theme, onChange: handleChangeTheme, onToggleMode: handleToggleTheme }}>
       {children}
     </SettingContext.Provider>
   );

@@ -76,6 +76,18 @@ export interface ProfileInput extends Partial<UserProfile> {
   lastName: string;
 }
 
+export interface SendChatInput {
+  message: string;
+  sender: User;
+  conversationId: string;
+  receiveId: Array<string>;
+}
+
+export interface CreateConversationInput {
+  senderId: string;
+  receiverId: Array<string>;
+}
+
 // export type AcceptFriendInput = {
 //   id: string;
 //   addressee: User;

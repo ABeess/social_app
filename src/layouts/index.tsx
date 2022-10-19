@@ -1,12 +1,38 @@
 import { styled } from '@mui/material';
+import { ReactElement } from 'react';
 import { Outlet } from 'react-router-dom';
 import { AuthGuard } from 'src/guards/AuthGuard';
 import DashboardLayout from './dashboard';
 import LogoOnly from './LogoOnly';
+import MainLayout from './main';
 
-const RootStyle = styled('div')(({ theme }) => ({
+type Variants = 'dashboard' | 'logoOnly' | 'main';
+interface ILayout {
+  variants?: Variants;
+}
+
+export default function Layout({ variants = 'main' }: ILayout) {
+  if (variants === 'logoOnly') {
+    return <LogoOnly />;
+  }
+
+  if (variants === 'dashboard') {
+    return (
+      <RenderContent>
+        <DashboardLayout />
+      </RenderContent>
+    );
+  }
+
+  return (
+    <RenderContent>
+      <MainLayout />
+    </RenderContent>
+  );
+}
+
+const RootStyle = styled('div')(() => ({
   display: 'flex',
-  gap: theme.spacing(2),
 }));
 
 const MainStyle = styled('main')(({ theme }) => ({
@@ -16,29 +42,13 @@ const MainStyle = styled('main')(({ theme }) => ({
   paddingLeft: theme.spacing(4),
   paddingBottom: theme.spacing(15),
 }));
-
-type Variants = 'dashboard' | 'logoOnly' | 'main';
-interface ILayout {
-  variants?: Variants;
+interface RenderContentProps {
+  children: ReactElement;
 }
-
-export default function Layout({ variants = 'dashboard' }: ILayout) {
-  if (variants === 'logoOnly') {
-    return <LogoOnly />;
-  }
-
-  if (variants === 'main') {
-    return (
-      <>
-        <Outlet />
-      </>
-    );
-  }
+function RenderContent({ children }: RenderContentProps) {
   return (
     <RootStyle>
-      <AuthGuard>
-        <DashboardLayout />
-      </AuthGuard>
+      <AuthGuard>{children}</AuthGuard>
 
       <MainStyle>
         <Outlet />

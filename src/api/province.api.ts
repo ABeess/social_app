@@ -1,5 +1,3 @@
-// https://vapi.vnappmob.com/api/province
-
 import axios, { AxiosRequestConfig } from 'axios';
 
 export const getProvince = async (option?: AxiosRequestConfig) =>

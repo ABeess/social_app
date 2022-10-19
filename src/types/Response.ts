@@ -1,5 +1,16 @@
 import { Maybe } from '.';
-import { Comment, Friendship, Notification, Post, PostLike, User, UserProfile } from './Base';
+import {
+  Comment,
+  Conversation,
+  Friendship,
+  Message,
+  Notification,
+  Participant,
+  Post,
+  PostLike,
+  User,
+  UserProfile,
+} from './Base';
 
 export type QueryResponse = {
   page: number;
@@ -50,6 +61,10 @@ export interface FriendShipRequestResponse extends QueryResponse, Typename {
   friendRequest: Array<Friendship>;
 }
 
+export interface FriendListResponse extends QueryResponse, Typename {
+  friends: Array<User>;
+}
+
 export interface LikePostResponse extends BaseResponse, Typename {
   totalLike?: number;
   likes: PostLike;
@@ -68,6 +83,22 @@ export interface ProfileUserResponse extends BaseResponse, Typename {
 export interface UpdateUserProfileResponse extends BaseResponse, Typename {
   user: User;
   profile: UserProfile;
+}
+
+export interface ListChatSideBarResponse extends BaseResponse, Typename {
+  sidebar: Array<Participant>;
+}
+
+export interface ListChatResponse extends BaseResponse, Typename {
+  chats: Array<Message>;
+}
+
+export interface createConversationResponse extends BaseResponse, Typename {
+  conversation: Conversation;
+}
+
+export interface ConversationResponse extends BaseResponse, Typename {
+  conversations: Array<Conversation>;
 }
 
 export type AddFriendResponse = BaseResponse & Typename;

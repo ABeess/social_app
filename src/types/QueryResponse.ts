@@ -1,5 +1,4 @@
 import { Post } from 'src/generated/graphql';
-import { Maybe } from '.';
 import {
   CommentResponse,
   FriendShipRecommendResponse,
@@ -9,6 +8,10 @@ import {
   LikePostResponse,
   HoverCardResponse,
   ProfileUserResponse,
+  FriendListResponse,
+  ListChatSideBarResponse,
+  ListChatResponse,
+  ConversationResponse,
 } from './Response';
 
 export type Query = {
@@ -22,6 +25,10 @@ export type Query = {
   getLikeByPost: LikePostResponse;
   hoverCard: HoverCardResponse;
   getProfileUser: ProfileUserResponse;
+  getFriends: FriendListResponse;
+  listSideBar: ListChatSideBarResponse;
+  getChats: ListChatResponse;
+  getConversations: ConversationResponse;
 };
 
 export type AllPostResponse = QueryResponse & {
@@ -42,3 +49,7 @@ export type FriendWaitingQuery = Pick<Query, 'friendWaiting'>;
 export type LikePostQuery = Pick<Query, 'getLikeByPost'>;
 export type HoverCardQuery = Pick<Query, 'hoverCard'>;
 export type ProfileUserQuery = Pick<Query, 'getProfileUser'>;
+export type FriendListQuery = Pick<Query, 'getFriends'>;
+export type ListChatSideBarQuery = Pick<Query, 'listSideBar'>;
+export type ListChatQuery = Pick<Query, 'getChats'>;
+export type ConversationQuery = Pick<Query, 'getConversations'>;

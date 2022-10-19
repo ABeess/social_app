@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
 import { BoxProps } from '@mui/system';
-import React from 'react';
 
 export default function Illustrator404({ ...other }: BoxProps) {
   return (

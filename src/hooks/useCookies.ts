@@ -11,7 +11,7 @@ export default function useCookiesTheme() {
   };
 
   return {
-    themeMode: cookie.themeMode,
+    themeMode: cookie.themeMode as string,
     setThemeMode,
   };
 }

@@ -9,6 +9,6 @@ export default defineConfig({
     port: 3090,
   },
   preview: {
-    port: 3090,
+    port: 3030,
   },
 });

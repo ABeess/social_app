@@ -4,6 +4,7 @@ import {
   Box,
   Button,
   Divider,
+  IconButton,
   List,
   ListItemAvatar,
   ListItemButton,
@@ -19,6 +20,7 @@ import { useInView } from 'react-intersection-observer';
 import { getNotification, markAsReadNotification } from 'src/api/notification.api';
 import IconButtonAnimate from 'src/components/animate/IconButtonAnimate';
 import Iconify from 'src/components/Iconify';
+import { NotificationsIcon } from 'src/components/icons';
 import Popover from 'src/components/Popover';
 import NotificationSkeleton from 'src/components/skeleton/NotificationSkeleton';
 import TextMaxLine from 'src/components/TextMaxLine';
@@ -145,11 +147,12 @@ const NotificationPopover = () => {
 
   return (
     <>
-      <IconButtonAnimate size="large" onClick={handleOpenPopover}>
+      <IconButton onClick={handleOpenPopover}>
         <Badge badgeContent={totalUnread} color="error">
-          <Iconify icon="ooui:bell" sx={{ width: 22, height: 22 }} />
+          {/* <Iconify icon="ooui:bell" sx={{ width: 22, height: 22 }} /> */}
+          <NotificationsIcon />
         </Badge>
-      </IconButtonAnimate>
+      </IconButton>
       <Popover open={Boolean(anchorEl)} anchorEl={anchorEl} onClose={handleClosePopover} sx={{ maxHeight: 600 }}>
         <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ p: 2, pb: 1 }}>
           <Box>

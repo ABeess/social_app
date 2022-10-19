@@ -5,20 +5,15 @@ import IconButtonAnimate from 'src/components/animate/IconButtonAnimate';
 import Iconify from 'src/components/Iconify';
 import Image from 'src/components/Image';
 import { GetFriendResponse } from 'src/generated/graphql';
-import useRouter from 'src/hooks/useRouter';
-import { useAppSelector } from 'src/redux/hooks';
 
 const RootStyled = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(2),
 }));
 
 export const ProfileFriendList = () => {
-  const user = useAppSelector((state) => state.auth.user);
-  const { query } = useRouter();
+  const [friendState] = useState<GetFriendResponse>({});
 
-  const [friendState, setFriendState] = useState<GetFriendResponse>({});
-
-  const { friends, totalCount, totalPage } = friendState;
+  const { friends } = friendState;
 
   // const { data } = useGetFriendQuery({
   //   variables: {
